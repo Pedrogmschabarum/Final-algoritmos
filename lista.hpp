@@ -1,13 +1,18 @@
 #pragma once
-#include iostream
+#include <iostream>
+#include "no.hpp"
 
-protected:
+struct lista
+{
+    No *inicio;
+    int tam;
+
     lista();
     ~lista();
     // definir o tipo dos parâmetros
     void adicionar();
-    void adicionarInicio();
-    void adicionarPosicão(int, int);
+    void adicionarInicio(lista, int);
+    void adicionarPosicao(int, int);
     void remover();
     void removerInicio();
     void retirarPosicao(int);
@@ -15,3 +20,4 @@ protected:
     bool listaVazia();
     int encontrarPosicao(int);
     bool contem(int);
+};
