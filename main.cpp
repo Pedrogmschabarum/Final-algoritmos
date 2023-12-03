@@ -50,7 +50,7 @@ main()
         {
         case 1:
             cin >> valor;
-            liste.adicionar(valor);
+            liste.adicionarInicio(valor);
             break;
         case 2:
 
@@ -59,14 +59,13 @@ main()
 
             break;
         case 4:
-            cin >> valor;
-            liste.adicionarInicio(&liste, valor);
+            liste.removerInicio();
             break;
         case 5:
 
             break;
         case 6:
-
+            liste.remover();
             break;
         case 7:
 
@@ -97,6 +96,6 @@ main()
         }
 
     } while (opcao != 14);
-    
+
     return 0;
 }

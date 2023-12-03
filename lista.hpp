@@ -4,23 +4,23 @@
 
 struct lista:No
 {
-    private:
+    public:
 
     No *inicio;
-    int tam;
+    int tamanho;
     
     public:
 
     lista();
     ~lista();
     void adicionar(int);
-    void adicionarInicio(lista*, int);
+    void adicionarInicio(int);
     void adicionarPosicao(int, int);
     void remover();
     void removerInicio();
-    void retirarPosicao(int);
-    void retirarNo(int);
-    bool listaVazia();
-    int encontrarPosicao(int);
-    bool contem(int);
+    // void retirarPosicao(int);
+    // void retirarNo(int);
+    // bool listaVazia();
+    // int encontrarPosicao(int);
+    // bool contem(int);
 };
