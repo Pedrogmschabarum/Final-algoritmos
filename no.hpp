@@ -4,6 +4,6 @@
 
 struct No
 {
-    int valor;
+    int valor, tamanho;
     No *proximo;
 };

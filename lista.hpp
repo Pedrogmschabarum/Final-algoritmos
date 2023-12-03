@@ -2,16 +2,19 @@
 #include <iostream>
 #include "no.hpp"
 
-struct lista
+struct lista:No
 {
+    private:
+
     No *inicio;
     int tam;
+    
+    public:
 
     lista();
     ~lista();
-    // definir o tipo dos parâmetros
-    void adicionar();
-    void adicionarInicio(lista, int);
+    void adicionar(int);
+    void adicionarInicio(lista*, int);
     void adicionarPosicao(int, int);
     void remover();
     void removerInicio();

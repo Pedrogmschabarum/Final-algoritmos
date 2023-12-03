@@ -4,14 +4,19 @@
 
 lista::lista()
 {
+    
 }
 lista::~lista()
 {
+
 }
-void lista::adicionar()
+void lista::adicionar(int valor)
 {
+    No *novo = new No();
+    novo->valor = valor;
+    this->tamanho++;
 }
-int lista::adicionarInicio(lista *lista, int valor)
+void lista::adicionarInicio(lista *lista, int valor)
 {
     No *novo = new No();
     novo->valor = valor;
