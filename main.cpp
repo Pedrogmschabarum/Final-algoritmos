@@ -1,6 +1,6 @@
 #include <iostream>
-#include "lista.hpp"
-
+#include "lista.cpp"
+#include "no.hpp"
 using namespace std;
 
 void cabecalho()
