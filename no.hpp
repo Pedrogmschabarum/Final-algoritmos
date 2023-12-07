@@ -6,4 +6,6 @@ struct No
     int valor;
     No *proximo;
 
+    No(int);
+    No();
 };

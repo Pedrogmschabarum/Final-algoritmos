@@ -4,7 +4,7 @@
 
 struct lista
 {
-    public:
+    private:
 
     No *inicio;
     int tamanho;
