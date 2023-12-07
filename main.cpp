@@ -1,6 +1,7 @@
 #include <iostream>
 #include "lista.cpp"
 #include "no.hpp"
+
 using namespace std;
 
 void cabecalho()
@@ -91,7 +92,12 @@ main()
 
             break;
 
+        case 14:
+            
+            break;
+
         default:
+            cout << "Operação invalida!" << endl;
             break;
         }
 
