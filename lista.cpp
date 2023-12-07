@@ -9,7 +9,6 @@ lista::lista()
 
 lista::~lista()
 {
-    delete this;
 }
 
 void lista::adicionar(int elemento)
@@ -165,25 +164,70 @@ void lista::retirarPosicao(int posicao)
     delete atual;
 }
 
-void lista::retirarNo(int noh)
+void lista::retirarNo(int elemento)
 {
+    No *anterior = nullptr;
+    No *atual = inicio;
+
+    while (atual != nullptr && atual->valor != elemento)
+    {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == nullptr)
+    {
+        std::cout << "Elemento não encontrado." << std::endl;
+        return;
+    }
+
+    if (anterior == nullptr)
+    {
+        // Remoção do primeiro elemento
+        inicio = atual->proximo;
+    }
+    else
+    {
+        anterior->proximo = atual->proximo;
+    }
+
+    delete atual;
 }
 
 bool lista::listaVazia()
 {
-    if(this->tamanho==0){
+    if (this->tamanho == 0)
+    {
         return true;
-    }else{
+    }
+    else
+    {
         return false;
     }
 }
 
 int lista::encontrarPosicao(int elemento)
 {
+    int posicao = 0;
+    No *atual = inicio;
+
+    while (atual != nullptr && atual->valor != elemento)
+    {
+        atual = atual->proximo;
+        posicao++;
+    }
+
+    if (atual == nullptr)
+    {
+        return -1; // Elemento não encontrado
+    }
+
+    return posicao;
 }
 
 bool lista::contem(int elemento)
 {
+    return encontrarPosicao(elemento) != -1;
 }
 
 void lista::imprimirLista()
@@ -209,4 +253,14 @@ void lista::imprimirLista()
 int lista::getTamanho()
 {
     return this->tamanho;
+}
+
+void lista::destruir()
+{
+    while (inicio != nullptr)
+    {
+        No *temp = inicio;
+        inicio = inicio->proximo;
+        delete temp;
+    }
 }

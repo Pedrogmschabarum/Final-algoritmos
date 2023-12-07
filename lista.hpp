@@ -21,6 +21,7 @@ struct lista
     void retirarPosicao(int);
     void retirarNo(int);
     void imprimirLista();
+    void destruir();
     int getTamanho();
     int encontrarPosicao(int);
     bool listaVazia();
