@@ -15,6 +15,16 @@ void lista::adicionar(int elemento)
     No *novo = new No();
     novo->valor = elemento;
     this->tamanho++;
+    
+    if (this->inicio == nullptr) {
+        this->inicio = novo;
+    } else {
+        No* atual = this->inicio;
+        while (atual->proximo != nullptr) {
+            atual = atual->proximo;
+        }
+        atual->proximo = novo;
+    }
 }
 void lista::adicionarInicio(int elemento)
 {
@@ -88,18 +98,34 @@ void lista::removerInicio()
         }
     }
 }
-// void lista::retirarPosicao(int posicao)
-// {
-// }
-// void lista::retirarNo(int noh)
-// {
-// }
-// bool lista::listaVazia()
-// {
-// }
-// int lista::encontrarPosicao(int elemento)
-// {
-// }
-// bool lista::contem(int elemento)
-// {
-// }
+void lista::retirarPosicao(int posicao)
+{
+}
+void lista::retirarNo(int noh)
+{
+}
+bool lista::listaVazia()
+{
+}
+int lista::encontrarPosicao(int elemento)
+{
+}
+bool lista::contem(int elemento)
+{
+}
+void lista::imprimirLista(){
+    
+    No* atual = this->inicio;
+    
+    while (atual != nullptr) {
+        std::cout << atual->valor << " ";
+        atual = atual->proximo;
+    }
+    
+    std::cout << std::endl;
+}
+
+int lista::getTamanho(){
+    
+    return this->tamanho;
+}

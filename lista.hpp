@@ -2,7 +2,7 @@
 #include <iostream>
 #include "no.hpp"
 
-struct lista:No
+struct lista
 {
     public:
 
@@ -18,9 +18,11 @@ struct lista:No
     void adicionarPosicao(int, int);
     void remover();
     void removerInicio();
-    // void retirarPosicao(int);
-    // void retirarNo(int);
-    // bool listaVazia();
-    // int encontrarPosicao(int);
-    // bool contem(int);
+    void retirarPosicao(int);
+    void retirarNo(int);
+    void imprimirLista();
+    int getTamanho();
+    int encontrarPosicao(int);
+    bool listaVazia();
+    bool contem(int);
 };
