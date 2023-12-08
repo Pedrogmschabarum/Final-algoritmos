@@ -1,6 +1,6 @@
+#include <Windows.h>
 #include <iostream>
 #include "lista.hpp"
-#include "no.hpp"
 
 lista::lista()
 {
@@ -11,11 +11,11 @@ lista::~lista()
 {
 }
 
-void lista::adicionar(int elemento)
+void lista::adicionar(int dado)
 {
-    No *novo = new No(elemento);
+    No *novo = new No(dado);
 
-    if (tamanho == -1)
+    if (listaVazia())
     {
         inicio = novo;
     }
@@ -31,15 +31,15 @@ void lista::adicionar(int elemento)
     this->tamanho++;
 }
 
-void lista::adicionarInicio(int elemento)
+void lista::adicionarInicio(int dado)
 {
-    No *novo = new No(elemento);
+    No *novo = new No(dado);
     novo->proximo = inicio;
     inicio = novo;
     this->tamanho++;
 }
 
-void lista::adicionarPosicao(int elemento, int posicao)
+void lista::adicionarPosicao(int dado, int posicao)
 {
     if (posicao < 0)
     {
@@ -49,41 +49,45 @@ void lista::adicionarPosicao(int elemento, int posicao)
 
     if (posicao == 0)
     {
-        adicionarInicio(elemento);
+        adicionarInicio(dado);
         return;
     }
 
-    No *novo = new No(elemento);
-    No *anterior = nullptr;
-    No *atual = inicio;
+    No *novo = new No(dado);
+    No *anterior = nullptr, *atual = this->inicio;
+    int i;
 
-    for (int i = 0; i < posicao && atual != nullptr; i++)
+    for (i = 0; i < posicao && atual != nullptr; i++)
     {
         anterior = atual;
         atual = atual->proximo;
     }
 
-    if (atual == nullptr)
+    if (i < posicao && atual == nullptr)
     {
-        adicionar(elemento);
-        delete novo;
-        return;
+        std::cout << "Posicao nao existe. Deseja inserir no final da fila?\n1-Sim\n2-Nao" << std::endl;
+        short int opcao;
+        std::cin >> opcao;
+        if (opcao - 1)
+        {
+            std::cout << "Posicao nao inserida." << std::endl;
+            return;
+        }
+        else
+        {
+            adicionar(dado);
+            delete novo;
+            return;
+        }
     }
 
     novo->proximo = atual;
-    if (anterior != nullptr)
-    {
-        anterior->proximo = novo;
-    }
-    else
-    {
-        inicio = novo;
-    }
+    anterior->proximo = novo;
 }
 
 void lista::remover()
 {
-    if (!listaVazia())
+    if (listaVazia())
     {
         std::cout << "A lista está vazia." << std::endl;
         return;
@@ -106,19 +110,19 @@ void lista::remover()
 
     delete atual;
 
-    if (anterior != nullptr)
-    {
-        anterior->proximo = nullptr;
-    }
-    else
-    {
-        inicio = nullptr;
-    }
+    // if (anterior != nullptr)
+    // {
+    //     anterior->proximo = nullptr;
+    // }
+    // else
+    // {
+    //     inicio = nullptr;
+    // }
 }
 
 void lista::removerInicio()
 {
-    if (!listaVazia())
+    if (listaVazia())
     {
         std::cout << "A lista está vazia." << std::endl;
         return;
@@ -131,7 +135,7 @@ void lista::removerInicio()
 
 void lista::retirarPosicao(int posicao)
 {
-    if (!listaVazia() || inicio == nullptr)
+    if (listaVazia() || inicio == nullptr)
     {
         std::cout << "Posição inválida." << std::endl;
         return;
@@ -164,12 +168,12 @@ void lista::retirarPosicao(int posicao)
     delete atual;
 }
 
-void lista::retirarNo(int elemento)
+void lista::retirarNo(int dado)
 {
     No *anterior = nullptr;
     No *atual = inicio;
 
-    while (atual != nullptr && atual->valor != elemento)
+    while (atual != nullptr && atual->valor != dado)
     {
         anterior = atual;
         atual = atual->proximo;
@@ -196,7 +200,7 @@ void lista::retirarNo(int elemento)
 
 bool lista::listaVazia()
 {
-    if (this->tamanho == 0)
+    if (this->tamanho == -1)
     {
         return true;
     }
@@ -206,12 +210,12 @@ bool lista::listaVazia()
     }
 }
 
-int lista::encontrarPosicao(int elemento)
+int lista::encontrarPosicao(int dado)
 {
     int posicao = 0;
     No *atual = inicio;
 
-    while (atual != nullptr && atual->valor != elemento)
+    while (atual != nullptr && atual->valor != dado)
     {
         atual = atual->proximo;
         posicao++;
@@ -225,14 +229,14 @@ int lista::encontrarPosicao(int elemento)
     return posicao;
 }
 
-bool lista::contem(int elemento)
+bool lista::contem(int dado)
 {
-    return encontrarPosicao(elemento) != -1;
+    return encontrarPosicao(dado) != -1;
 }
 
 void lista::imprimirLista()
 {
-    if (!listaVazia())
+    if (listaVazia())
     {
         std::cout << "A lista está vazia!" << std::endl;
         return;

@@ -2,15 +2,13 @@
 #include <iostream>
 #include "no.hpp"
 
-struct lista
+struct lista : No
 {
-    private:
-
+private:
     No *inicio;
     int tamanho;
-    
-    public:
 
+public:
     lista();
     ~lista();
     void adicionar(int);

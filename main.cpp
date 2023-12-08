@@ -7,23 +7,28 @@ const int DELAY = 500;
 
 using namespace std;
 
+void fileira()
+{
+    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
+}
+
 void cabecalho()
 {
     Sleep(DELAY);
-    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
+    fileira();
     cout << " |---Bem vindo ao programa de fila encadeada---|" << endl;
-    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
+    fileira();
     cout << endl;
 }
 
 void fim()
 {
     Sleep(DELAY);
-    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
+    fileira();
     Sleep(DELAY);
     cout << "--|---|---|---|---|---Adeus---|---|---|---|---|--" << endl;
     Sleep(DELAY);
-    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
+    fileira();
     cout << endl;
 }
 
@@ -32,7 +37,7 @@ void opcoes()
     Sleep(DELAY);
     cout << endl;
     cout << "Selecion e uma opção:" << endl;
-    Sleep(DELAY*2);
+    Sleep(DELAY);
     cout << "1-Adicionar elemento no início" << endl;
     cout << "2-Adicionar elemento em uma posição específica" << endl;
     cout << "3-Adicionar elemento no final" << endl;
@@ -80,7 +85,7 @@ main()
             Sleep(DELAY);
             cout << "Insira a posição desejada:" << endl;
             cin >> posicao;
-            liste.adicionarPosicao(valor, posicao);
+            liste.adicionarPosicao(valor, posicao - 1);
             break;
         case 3:
             Sleep(DELAY);
@@ -122,28 +127,24 @@ main()
             cout << "Insira o valor a ser procurado:" << endl;
             cin >> valor;
             Sleep(DELAY);
-            cout << "A lista contém " << liste.contem(valor) + 1 << " elementos" << endl;
+            cout << "A lista contém " << liste.contem(valor) << " elementos" << endl;
             break;
         case 11:
             Sleep(DELAY);
             cout << liste.listaVazia();
             break;
-
         case 12:
             Sleep(DELAY);
-            // 12-Destruir lista
+            liste.destruir();
             break;
-
         case 13:
             Sleep(DELAY);
             liste.imprimirLista();
             break;
-
         case 14:
             Sleep(DELAY);
             fim();
             break;
-
         default:
             Sleep(DELAY);
             cout << "Operação invalida!" << endl;
