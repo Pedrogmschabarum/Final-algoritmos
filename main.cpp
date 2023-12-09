@@ -7,28 +7,23 @@ const int DELAY = 500;
 
 using namespace std;
 
-void fileira()
-{
-    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
-}
-
 void cabecalho()
 {
     Sleep(DELAY);
-    fileira();
+    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
     cout << " |---Bem vindo ao programa de fila encadeada---|" << endl;
-    fileira();
+    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
     cout << endl;
 }
 
 void fim()
 {
     Sleep(DELAY);
-    fileira();
+    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
     Sleep(DELAY);
     cout << "--|---|---|---|---|---Adeus---|---|---|---|---|--" << endl;
     Sleep(DELAY);
-    fileira();
+    cout << "|---|---|---|---|---|---|---|---|---|---|---|---|" << endl;
     cout << endl;
 }
 
@@ -36,17 +31,17 @@ void opcoes()
 {
     Sleep(DELAY);
     cout << endl;
-    cout << "Selecion e uma opção:" << endl;
-    Sleep(DELAY);
+    cout << "Selecione uma operação:" << endl;
+    Sleep(DELAY / 1.5);
     cout << "1-Adicionar elemento no início" << endl;
     cout << "2-Adicionar elemento em uma posição específica" << endl;
     cout << "3-Adicionar elemento no final" << endl;
     cout << "4-Remover elemento no início" << endl;
-    cout << "5-Remover elemento em uma posição específica" << endl;
+    cout << "5-Remover uma posição da fila" << endl;
     cout << "6-Remover elemento no final" << endl;
     cout << "7-Remover um elemento específico" << endl;
     cout << "8-Verificar tamanho da lista" << endl;
-    cout << "9-Encontrar posição de um elemento" << endl;
+    cout << "9-Localizar elemento" << endl;
     cout << "10-Verificar existência de um elemento" << endl;
     cout << "11-Criar nova lista" << endl;
     cout << "12-Destruir lista" << endl;
@@ -65,7 +60,6 @@ main()
 
     do
     {
-        // chama a lista de opçoes;
         opcoes();
 
         cin >> opcao;
@@ -96,24 +90,29 @@ main()
         case 4:
             Sleep(DELAY);
             liste.removerInicio();
+            cout << "Elemento inicial removido" << endl;
             break;
         case 5:
             Sleep(DELAY);
+            cout << "Insira a posicao a ser removida" << endl;
             cin >> posicao;
             liste.retirarPosicao(posicao);
+            cout << "Posicao removida" << endl;
             break;
         case 6:
             Sleep(DELAY);
             liste.remover();
+            cout << "Elemento final removido" << endl;
             break;
         case 7:
             Sleep(DELAY);
-            cin >> posicao;
-            liste.retirarNo(posicao);
+            cin >> valor;
+            liste.retirarNo(valor);
+            cout << "Elemento removido" << endl;
             break;
         case 8:
             Sleep(DELAY);
-            cout << liste.getTamanho() << endl;
+            cout << "A lista tem " << liste.getTamanho() << " elementos." << endl;
             break;
         case 9:
             Sleep(DELAY);
@@ -127,15 +126,18 @@ main()
             cout << "Insira o valor a ser procurado:" << endl;
             cin >> valor;
             Sleep(DELAY);
-            cout << "A lista contém " << liste.contem(valor) << " elementos" << endl;
+            liste.contem(valor);
             break;
         case 11:
             Sleep(DELAY);
-            cout << liste.listaVazia();
+            liste.destruir();
+            Sleep(DELAY);
+            cout << "Nova lista criada" << endl;
             break;
         case 12:
             Sleep(DELAY);
             liste.destruir();
+            cout << "Lista deletada" << endl;
             break;
         case 13:
             Sleep(DELAY);
