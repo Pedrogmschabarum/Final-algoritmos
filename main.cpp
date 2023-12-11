@@ -50,7 +50,7 @@ void opcoes()
     cout << endl;
 }
 
-main()
+int main()
 {
     cabecalho();
 
