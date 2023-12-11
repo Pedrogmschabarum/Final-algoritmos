@@ -20,7 +20,6 @@ public:
     void retirarNo(int);
     void imprimirLista();
     void destruir();
-    // void novaLista();
     void contem(int);
     int getTamanho();
     int encontrarPosicao(int);

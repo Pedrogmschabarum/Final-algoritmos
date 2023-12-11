@@ -240,7 +240,7 @@ void lista::contem(int dado)
         std::cout << "O elemento " << dado << " ocupa a posicao nº " << posicao+1 << std::endl;
     }
 }
-// imprimirLista ok
+
 void lista::imprimirLista()
 {
     if (listaVazia())
